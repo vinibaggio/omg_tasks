@@ -2,8 +2,7 @@ require 'spec_helper'
 
 describe User do
   
-  should_have_attached :photo
+  should_have_attached_file :photo
   
-  before(:each) do
-  end
+  
 end
