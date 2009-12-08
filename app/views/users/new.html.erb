@@ -1,0 +1,25 @@
+<h1>User registration</h1>
+<% form_for User.new, :multipart => true do |f| %>
+	<fieldset>
+		<legend>User login information</legend>
+		<p>
+			<%= f.label :username %>
+			<%= f.text_field :username %>
+		</p>
+		<p>
+			<%= f.label :password %>
+			<%= f.password_field :password %>
+		</p>
+		<p>
+			<%= f.label :password_confirmation %>
+			<%= f.password_field :password_confirmation %>
+		</p>
+		<p>
+			<%= f.label :photo %>
+			<%= f.file_field :photo %>
+		</p>
+		<p>
+			<%= f.submit 'Register' %>
+		</p>
+	</fieldset>
+<% end %>
