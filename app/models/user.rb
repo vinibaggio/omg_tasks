@@ -4,4 +4,5 @@ class User < ActiveRecord::Base
   
   attr_accessible :username, :password, :password_confirmation
   validates_confirmation_of :password, :on => :create
+  validates_presence_of :username, :password
 end
