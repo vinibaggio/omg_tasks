@@ -17,8 +17,16 @@ ActiveRecord::Schema.define(:version => 20091208012357) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.string   "email",                :limit => 100, :null => false
+    t.string   "encrypted_password",   :limit => 40,  :null => false
+    t.string   "password_salt",        :limit => 20,  :null => false
+    t.string   "confirmation_token",   :limit => 20
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
 end
