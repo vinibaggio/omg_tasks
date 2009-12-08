@@ -3,4 +3,5 @@ class User < ActiveRecord::Base
   devise :authenticatable, :authentication_keys => [:username]
   
   attr_accessible :username, :password, :password_confirmation
+  validates_confirmation_of :password, :on => :create
 end

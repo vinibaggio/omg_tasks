@@ -3,6 +3,7 @@ require 'spec_helper'
 describe User do
   
   should_have_attached_file :photo
+  should_validate_confirmation_of :password
   
-  
+  # check how to test devise
 end
