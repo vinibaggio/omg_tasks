@@ -7,13 +7,12 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :photo_file_size
       t.datetime :photo_updated_at
       
-      t.authenticatable :encryptor => :sha1
-      t.confirmable
+      t.authenticatable :encryptor => :sha1, :skip_email => true
 
       t.timestamps
     end
     
-    add_index :users, :username,                :unique => true
+    add_index :users, :username, :unique => true
   end
 
   def self.down
