@@ -7,18 +7,19 @@ RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
-  # Settings in config/environments/* take precedence over those specified here.
-  # Application configuration should go into files in config/initializers
-  # -- all .rb files in that directory are automatically loaded.
 
-  # Add additional load paths for your own custom dirs
-  # config.load_paths += %W( #{RAILS_ROOT}/extras )
-
-  # Specify gems that this application depends on and have them installed with rake gems:install
-  # config.gem "bj"
-  # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
-  # config.gem "sqlite3-ruby", :lib => "sqlite3"
-  # config.gem "aws-s3", :lib => "aws/s3"
+  config.gem "warden", :lib => "warden", :source => "http://gemcutter.org"  
+  config.gem "devise", :lib => "devise", :source => "http://gemcutter.org"
+  config.gem "paperclip", :lib => "paperclip", :source => "http://gemcutter.org"
+  config.gem "inherited_resources", :lib => "inherited_resources", :source => "http://gemcutter.org"
+  
+  # Testing stuff
+  config.gem "rspec", :lib => false, :source => "http://gemcutter.org"
+  config.gem "rspec_rails", :lib => false, :source => "http://gemcutter.org"
+  config.gem "remarkable", :lib => false, :source => "http://gemcutter.org"
+  config.gem "remarkable_rails", :lib => false, :source => "http://gemcutter.org"
+  config.gem "remarkable_paperclip", :lib => false, :source => "http://gemcutter.org"
+  config.gem "webrat", :lib => false, :source => "http://gemcutter.org"
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
