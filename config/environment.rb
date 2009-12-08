@@ -15,7 +15,7 @@ Rails::Initializer.run do |config|
   
   # Testing stuff
   config.gem "rspec", :lib => false, :source => "http://gemcutter.org"
-  config.gem "rspec_rails", :lib => false, :source => "http://gemcutter.org"
+  config.gem "rspec-rails", :lib => false, :source => "http://gemcutter.org"
   config.gem "remarkable", :lib => false, :source => "http://gemcutter.org"
   config.gem "remarkable_rails", :lib => false, :source => "http://gemcutter.org"
   config.gem "remarkable_paperclip", :lib => false, :source => "http://gemcutter.org"
