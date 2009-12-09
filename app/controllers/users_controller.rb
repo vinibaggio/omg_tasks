@@ -1,3 +1,3 @@
 class UsersController < InheritedResources::Base
-  defaults :singleton => true
+  actions :create, :new
 end
