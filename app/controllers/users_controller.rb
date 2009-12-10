@@ -1,5 +1,5 @@
 class UsersController < InheritedResources::Base
-  actions :create, :new
+  actions :create, :new, :show
   
   def create
     create! do |format|
