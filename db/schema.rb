@@ -9,7 +9,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091208012357) do
+ActiveRecord::Schema.define(:version => 20091210025157) do
+
+  create_table "task_lists", :force => true do |t|
+    t.boolean  "public"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "task_lists", ["user_id"], :name => "index_task_lists_on_user_id"
+
+  create_table "tasks", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.integer  "task_list_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tasks", ["task_list_id"], :name => "index_tasks_on_task_list_id"
 
   create_table "users", :force => true do |t|
     t.text     "username"
@@ -17,8 +36,12 @@ ActiveRecord::Schema.define(:version => 20091208012357) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-    t.string   "encrypted_password", :limit => 40, :null => false
-    t.string   "password_salt",      :limit => 20, :null => false
+    t.string   "email",                :limit => 100, :null => false
+    t.string   "encrypted_password",   :limit => 40,  :null => false
+    t.string   "password_salt",        :limit => 20,  :null => false
+    t.string   "confirmation_token",   :limit => 20
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
