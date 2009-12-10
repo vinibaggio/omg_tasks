@@ -15,7 +15,14 @@ module Users::Filters
     end
 
     def find_user_from_session
-      @current_user ||= User.find(session[:user_id])
+      user_id = session[:user_id]
+      unless user_id
+        flash[:error] = "You must be logged in to proceed"
+        redirect_to new_user_session_path
+        false
+      else
+        @current_user ||= User.find(user_id)
+      end
     end
   end
 end
