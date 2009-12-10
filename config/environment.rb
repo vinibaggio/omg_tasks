@@ -20,7 +20,6 @@ Rails::Initializer.run do |config|
   config.gem "remarkable_rails", :lib => false, :source => "http://gemcutter.org"
   config.gem "remarkable_paperclip", :lib => false, :source => "http://gemcutter.org"
   config.gem "webrat", :lib => false, :source => "http://gemcutter.org"
-  config.gem "machinist", :lib => false, :source => "http://gemcutter.org"
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
