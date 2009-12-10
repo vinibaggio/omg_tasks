@@ -3,6 +3,8 @@ require 'spec_helper'
 describe User do
   
   should_have_attached_file :photo
+  should_have_many :task_lists
+  
   should_validate_confirmation_of :password
   should_validate_presence_of :password
   should_allow_values_for :username, "vinibaggio", "blablebli1", "bla123bla", :allow_blank => false, :allow_nil => false
