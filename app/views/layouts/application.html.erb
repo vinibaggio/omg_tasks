@@ -7,10 +7,10 @@
     <%= yield(:head) %>
   </head>
   <body>
-		<div id="top">
-			<!-- placeholder -->
-		</div>
     <div id="container">
+			<div id="topBar">
+				<%= display_user_bar %>
+			</div>
       <%- flash.each do |name, msg| -%>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <%- end -%>
