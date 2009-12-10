@@ -12,6 +12,6 @@ describe User do
   
   it "should use username as a parameter to construct urls" do
     user = User.new({:username => "vinibaggio"})
-    user.to_param.should == "vinibaggio"
+    user.to_param.should == user.username
   end
 end
