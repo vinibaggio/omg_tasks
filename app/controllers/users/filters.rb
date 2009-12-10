@@ -1,6 +1,6 @@
 module Users::Filters
   def acts_as_user(options={})
-    layout "user"
+    # layout "user"
     before_filter :find_user_from_session
     defaults options.reverse_merge(:route_prefix => nil)
     
