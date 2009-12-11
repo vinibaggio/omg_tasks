@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
   
   should_have_attached_file :photo
-  should_have_many :task_lists
+  should_have_many :task_lists, :dependent => :destroy
   
   should_validate_confirmation_of :password
   should_validate_presence_of :password
