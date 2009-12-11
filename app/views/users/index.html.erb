@@ -1,0 +1,6 @@
+<h1>App users</h1>
+
+<ul>
+	<% collection.each do |user| -%>
+		<li><%= link_to user.username, user_path(user)%></li>
+	<% end -%>
