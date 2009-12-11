@@ -1,0 +1,25 @@
+<h1>New task list</h1>
+
+<% form_for @task_list, :url => collection_path do |f| %>
+	<fieldset>
+		<legend>Task list information</legend>
+		<div class="task_list">
+			<p>
+				<%= f.label :title %>
+				<%= f.text_field :title %>
+			</p>
+			<p>
+				<%= f.check_box :shared %>
+				<%= f.label :shared %>
+			</p>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Add tasks</legend>
+		<% f.fields_for :tasks do |task_f| -%>
+			<%= render :partial => 'task', :locals => {:form => task_f} %>
+		<% end -%>
+		<p><%= link_to_function 'Add another task (noooo!!)', 'bla' %></p>
+	</fieldset>
+	<p><%= f.submit %></p>
+<% end -%>
