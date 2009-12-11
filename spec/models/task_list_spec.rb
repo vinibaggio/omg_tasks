@@ -3,4 +3,23 @@ require 'spec_helper'
 describe TaskList do
   should_have_many :tasks
   should_belong_to :user
+  
+  before(:all) do
+    @public_list = TaskList.create({:shared => true})
+    @private_list = TaskList.create({:shared => false})
+  end
+  
+  after(:all) do
+    TaskList.delete_all
+  end
+  
+  context "with shared lists" do
+    it "should include a public list" do
+      TaskList.shared.should include(@public_list)
+    end
+  
+    it "should not include a private list" do
+      TaskList.shared.should_not include(@private_list)
+    end
+  end
 end
