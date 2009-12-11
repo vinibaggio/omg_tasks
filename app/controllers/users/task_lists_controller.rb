@@ -1,5 +1,6 @@
 class Users::TaskListsController < InheritedResources::Base
   acts_as_current_user
+  belongs_to :user, :finder => :find_by_username!
   actions :all, :except => [:update]
   
   def new

@@ -1,10 +1,8 @@
 class Users::SharedListsController < InheritedResources::Base
-  actions :only => [:index]
-  acts_as_user
+  belongs_to :user, :finder => :find_by_username!
   
-  def index
-    @user = User.find_by_username!(params[:user_id])
-    @shared_lists = @user.task_lists.shared
-  end
+  actions :only => [:index]
+  
+  acts_as_user
   
 end
