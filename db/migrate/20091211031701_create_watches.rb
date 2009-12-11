@@ -1,4 +1,4 @@
-class CreateWatchlists < ActiveRecord::Migration
+class CreateWatches < ActiveRecord::Migration
   def self.up
     create_table :watches do |t|
       t.integer :user_id

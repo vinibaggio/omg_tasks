@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091210025157) do
+ActiveRecord::Schema.define(:version => 20091211031701) do
 
   create_table "task_lists", :force => true do |t|
     t.string   "title",      :default => ""
@@ -44,5 +44,15 @@ ActiveRecord::Schema.define(:version => 20091210025157) do
   end
 
   add_index "users", ["username"], :name => "index_users_on_username", :unique => true
+
+  create_table "watches", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "task_list_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "watches", ["task_list_id"], :name => "index_watches_on_task_list_id"
+  add_index "watches", ["user_id"], :name => "index_watches_on_user_id"
 
 end
