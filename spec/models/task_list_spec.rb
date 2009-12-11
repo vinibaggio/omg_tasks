@@ -4,9 +4,11 @@ describe TaskList do
   should_have_many :tasks, :dependent => :destroy
   should_belong_to :user
   
+  should_validate_presence_of :title
+  
   before(:all) do
-    @public_list = TaskList.create({:shared => true})
-    @private_list = TaskList.create({:shared => false})
+    @public_list = TaskList.create({:title => "A task list", :shared => true})
+    @private_list = TaskList.create({:title => "A task list", :shared => false})
   end
   
   after(:all) do

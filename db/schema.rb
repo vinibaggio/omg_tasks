@@ -12,6 +12,7 @@
 ActiveRecord::Schema.define(:version => 20091210025157) do
 
   create_table "task_lists", :force => true do |t|
+    t.string   "title",      :default => ""
     t.boolean  "shared",     :default => false
     t.integer  "user_id"
     t.datetime "created_at"

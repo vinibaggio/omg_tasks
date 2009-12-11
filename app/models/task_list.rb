@@ -3,4 +3,6 @@ class TaskList < ActiveRecord::Base
   belongs_to :user
   
   named_scope :shared, :conditions => {:shared => true}
+  
+  validates_presence_of :title
 end

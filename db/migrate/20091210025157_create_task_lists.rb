@@ -1,6 +1,7 @@
 class CreateTaskLists < ActiveRecord::Migration
   def self.up
     create_table :task_lists do |t|
+      t.string :title, :default => ""
       t.boolean :shared, :default => false
       t.integer :user_id
 
