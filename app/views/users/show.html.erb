@@ -8,7 +8,7 @@
 <div class="user" id="properties">
 	<h2>User's properties</h2>
 	<ul>
-		<li>User's shared lists</li>
+		<li><%= link_to 'User\'s shared lists', user_shared_lists_path(resource) %></li>
 		<li><%= link_to 'All user\'s lists', user_task_lists_path(resource) %></li>
 		<li>User's watchlist</li>
 	</ul>

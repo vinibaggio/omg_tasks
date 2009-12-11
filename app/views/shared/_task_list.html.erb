@@ -1,0 +1,18 @@
+<h2><%=h task_list.title %></h2>
+
+<h3>Tasks</h3>
+<p>
+	<% if task_list.tasks.blank? -%>
+		No tasks for this list.
+	<% else -%>
+		<% task_list.tasks.each do |task| -%>
+			<div class="task">
+				<strong>Title</strong><br/>
+				<%=h task.title%><br/>
+				<strong>Description:</strong><br/>
+				<%=h task.description %><br/>
+				<br/>
+			</div>
+		<% end -%>
+	<% end -%>
+</p>
