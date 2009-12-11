@@ -1,9 +1,9 @@
 class UsersController < InheritedResources::Base
-  actions :create, :new, :show
+  actions :create, :new
   
   def show
-    @user = User.find_by_username(params[:id])
-    show!
+    @user = User.find_by_username!(params[:id])
+#    show!
   end
   
   def create
