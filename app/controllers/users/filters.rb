@@ -1,6 +1,5 @@
 module Users::Filters
   def acts_as_user(options={})
-    # layout "user"
     before_filter :find_user_from_session
     defaults options.reverse_merge(:route_prefix => nil)
     
@@ -15,13 +14,12 @@ module Users::Filters
     end
 
     def find_user_from_session
-      user_id = session[:user_id]
-      unless user_id
+      if current_user.nil?
         flash[:error] = "You must be logged in to proceed"
         redirect_to new_user_session_path
         false
       else
-        @current_user ||= User.find(user_id)
+        @current_user ||= current_user
       end
     end
   end
