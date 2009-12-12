@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   devise :authenticatable, :authentication_keys => [:username]
   has_attached_file :photo
   has_many :task_lists, :dependent => :destroy
+  has_many :watches, :dependent => :destroy
   
   attr_accessible :username, :password, :password_confirmation, :photo
   validates_confirmation_of :password, :on => :create
