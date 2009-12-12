@@ -16,10 +16,12 @@
 	</fieldset>
 	<fieldset>
 		<legend>Add tasks</legend>
-		<% f.fields_for :tasks do |task_f| -%>
-			<%= render :partial => 'task', :locals => {:form => task_f} %>
-		<% end -%>
-		<p><%= link_to_function 'Add another task (noooo!!)', 'bla' %></p>
+		<div id="tasks">
+			<% f.fields_for :tasks do |task_f| -%>
+				<%= render :partial => 'task', :locals => {:form => task_f} %>
+			<% end -%>
+		</div>
+		<p><%= add_task_link(f) %></p>
 	</fieldset>
 	<p><%= f.submit %></p>
 <% end -%>
