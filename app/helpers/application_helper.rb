@@ -10,4 +10,8 @@ module ApplicationHelper
       link_to "login", new_user_session_path
     end
   end
+  
+  def requested_eql_current?
+    
+  end
 end

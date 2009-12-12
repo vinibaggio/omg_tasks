@@ -17,4 +17,5 @@ describe ApplicationHelper do
     helper.stub!(:current_user).and_return(nil)
     helper.display_user_bar.include?("login").should be_true
   end
+
 end
