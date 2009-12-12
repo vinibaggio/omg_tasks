@@ -1,0 +1,13 @@
+<h1>User's watchlist</h1>
+
+<p>
+<% if collection.blank? -%>
+	User isn't watching anything.
+<% else -%>
+	<% collection.each do |watch| -%>
+		<%= link_to watch.task_list.title, user_task_list_path(@current_user, watch.task_list) -%> | 
+		<%= link_to 'remove', [@current_user, watch], :method => :delete, :confirm => "Are you sure?" -%>
+		<br/>
+	<% end -%>
+<% end -%>
+</p>

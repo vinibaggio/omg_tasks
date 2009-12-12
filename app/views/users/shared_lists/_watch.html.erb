@@ -1,0 +1,6 @@
+<% unless requested_eql_current? %>
+	<% form_for Watch.new({:task_list => task_list}), :url => user_watches_path(@current_user) do |f| -%>
+		<%= f.hidden_field :task_list_id %>
+		<%= f.submit 'Add to watchlist'%>
+	<% end -%>
+<% end -%>
