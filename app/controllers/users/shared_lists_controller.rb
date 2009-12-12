@@ -1,8 +1,11 @@
 class Users::SharedListsController < InheritedResources::Base
-  belongs_to :user, :finder => :find_by_username!
   
   actions :only => [:index]
   
-  acts_as_user
+  acts_as_user(:collection_name => 'task_lists')
+  
+  def collection
+    end_of_association_chain.shared
+  end
   
 end

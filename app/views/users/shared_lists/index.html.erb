@@ -1,10 +1,10 @@
-<h1>Displaying <%= @user.username %>'s shared lists</h1>
+<h1>Displaying <%# @requested_user.username %>'s shared lists</h1>
 
 <p>
-<% if @shared_lists.blank? %>
+<% if collection.blank? %>
 	User has no shared lists.
 <% else -%>
-	<% @shared_lists.each do |task_list| -%>
+	<% collection.each do |task_list| -%>
 		<%= render :partial => 'shared/task_list' , :locals => {:task_list => task_list} %>
 	<% end -%>
 <% end -%>

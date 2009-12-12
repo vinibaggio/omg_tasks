@@ -3,12 +3,18 @@ module Users::Filters
   def acts_as_user(options={})
     before_filter :find_user_from_session, :find_requested_user
     
+    belongs_to :user, :finder => :find_by_username!
+    defaults options.reverse_merge(:route_prefix => '')
+    
     include ControllerMethods 
   end
   
   def acts_as_current_user(options={})
     # fetch the user first, then verify if the user can access
     prepend_before_filter :find_user_from_session, :current_user_only, :find_requested_user
+    
+    belongs_to :user, :finder => :find_by_username!
+    defaults options.reverse_merge(:route_prefix => '')
     
     include ControllerMethods
   end
