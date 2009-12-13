@@ -8,13 +8,21 @@ require 'remarkable'
 require 'remarkable_rails'
 require 'remarkable_paperclip'
 
+require 'webrat'
 
-# Uncomment the next line to use webrat's matchers
-require 'webrat/integrations/rspec-rails'
+Webrat.configure do |config|
+  config.mode = :rails
+end
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
 Dir[File.expand_path(File.join(File.dirname(__FILE__),'support','**','*.rb'))].each {|f| require f}
+
+# module Spec::Example::IntegrationExampleGroupMethods
+#   alias :story     :describe
+#   alias :scenario  :example
+#   alias :xscenario :xexample
+# end
 
 Spec::Runner.configure do |config|
   # If you're not using ActiveRecord you should remove these
@@ -23,6 +31,7 @@ Spec::Runner.configure do |config|
   config.use_transactional_fixtures = true
   config.use_instantiated_fixtures  = false
   config.fixture_path = RAILS_ROOT + '/spec/fixtures/'
+  config.include(Webrat::Matchers)
   
   def should_be_on(path)
      URI.parse(current_url).path.should == path
@@ -40,12 +49,16 @@ Spec::Runner.configure do |config|
    def page
      response.body
    end
-end
-
-module Spec::Example::ExampleGroupMethods
-  alias :story     :describe
-  alias :scenario  :example
-  alias :xscenario :xexample
+   
+   def create_user(attributes={})
+    attrs = {
+      :username => 'vinibaggio',
+      :password => 'password'
+    }
+    
+    attrs.merge!(attributes)
+    User.create(attrs)
+   end
 end
 
 
