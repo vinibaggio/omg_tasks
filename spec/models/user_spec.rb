@@ -31,5 +31,9 @@ describe User do
     it "should authenticate with valid username and password" do
       User.authenticate(:username => 'vinibaggio', :password => 'password').should be_instance_of(User)
     end
+    
+    it "should not authenticate with invalid username or password" do
+      User.authenticate(:username => 'vinibaggio', :password => 'wrong_password').should be_nil
+    end
   end
 end
