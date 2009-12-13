@@ -1,4 +1,7 @@
 module Users::TaskListsHelper
+  
+  # Add another task form elements
+  # Reference: http://railsforum.com/viewtopic.php?id=28447
   def add_task_link(form_builder)
     link_to_function 'add a task (no, go play videogames!)' do |page|
       form_builder.fields_for :tasks, Task.new, :child_index => 'NEW_RECORD' do |f|
