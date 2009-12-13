@@ -10,12 +10,12 @@ describe ApplicationHelper do
   
   it "should show user logged in details when user logged in" do
     helper.stub!(:current_user).and_return(@user)
-    helper.display_user_bar.include?("logout").should be_true
+    helper.display_user_bar.should include("logout")
   end
   
   it "should show user logged in details when user is not logged in" do
     helper.stub!(:current_user).and_return(nil)
-    helper.display_user_bar.include?("login").should be_true
+    helper.display_user_bar.should include("login")
   end
 
 end
