@@ -11,18 +11,25 @@ describe User do
   should_allow_values_for :username, "vinibaggio", "blablebli1", "bla123bla", :allow_blank => false, :allow_nil => false
   should_not_allow_values_for :username, "   ", "ola!"
   
-  # TODO: check how to test devise
-  
   before(:all) do
-    @user = User.create({:username => "vinibaggio"})
+    @user = User.create({:username => "vinibaggio", :password => "password"})
   end
   
   after(:all) do
     User.delete_all
-    TaskList.delete_all
   end
   
   it "should use username as a parameter to construct urls" do
     @user.to_param.should == @user.username
+  end
+  
+  context "when authenticating" do
+    it "should use username as authentication key" do
+      User.authentication_keys == [:username]
+    end
+    
+    it "should authenticate with valid username and password" do
+      User.authenticate(:username => 'vinibaggio', :password => 'password').should be_instance_of(User)
+    end
   end
 end
