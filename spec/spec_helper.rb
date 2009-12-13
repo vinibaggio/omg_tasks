@@ -51,13 +51,21 @@ Spec::Runner.configure do |config|
   end
 
   def create_user(attributes={})
-  attrs = {
-    :username => 'vinibaggio',
-    :password => 'password'
-  }
+    attrs = {
+      :username => 'vinibaggio',
+      :password => 'password'
+    }
 
-  attrs.merge!(attributes)
-  User.create(attrs)
+    attrs.merge!(attributes)
+    User.create(attrs)
+  end
+  
+  def do_login(user, password)
+    visit new_user_session_path
+
+    fill_in "Username", :with => user
+    fill_in "Password", :with => password
+    click_button "Sign in"
   end
 end
 

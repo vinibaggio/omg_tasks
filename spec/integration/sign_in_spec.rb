@@ -26,13 +26,4 @@ describe "As an user I want to sign in in order to create tasks" do
     should_be_on new_user_session_path
     
   end
-  
-  private
-  def do_login(user, password)
-    visit new_user_session_path
-    
-    fill_in "Username", :with => user
-    fill_in "Password", :with => password
-    click_button "Sign in"
-  end
 end
