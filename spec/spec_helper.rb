@@ -18,7 +18,7 @@ end
 # in ./support/ and its subdirectories.
 Dir[File.expand_path(File.join(File.dirname(__FILE__),'support','**','*.rb'))].each {|f| require f}
 
-# module Spec::Example::IntegrationExampleGroupMethods
+# module Spec::Example::ExampleGroupMethods
 #   alias :story     :describe
 #   alias :scenario  :example
 #   alias :xscenario :xexample
@@ -37,28 +37,28 @@ Spec::Runner.configure do |config|
      URI.parse(current_url).path.should == path
    end
 
-   def should_not_be_on(path)
-     URI.parse(current_url).path.should_not == path
-   end
+  def should_not_be_on(path)
+    URI.parse(current_url).path.should_not == path
+  end
 
-   # Add page to improve readability:
-   #
-   #   page.should contain("foo bar")
-   #   page.should have_tag("foo#bar")
-   #
-   def page
-     response.body
-   end
-   
-   def create_user(attributes={})
-    attrs = {
-      :username => 'vinibaggio',
-      :password => 'password'
-    }
-    
-    attrs.merge!(attributes)
-    User.create(attrs)
-   end
+  # Add page to improve readability:
+  #
+  #   page.should contain("foo bar")
+  #   page.should have_tag("foo#bar")
+  #
+  def page
+    response.body
+  end
+
+  def create_user(attributes={})
+  attrs = {
+    :username => 'vinibaggio',
+    :password => 'password'
+  }
+
+  attrs.merge!(attributes)
+  User.create(attrs)
+  end
 end
 
 
