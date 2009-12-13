@@ -12,7 +12,7 @@ describe User do
   should_not_allow_values_for :username, "   ", "ola!"
   
   before(:all) do
-    @user = User.create({:username => "vinibaggio", :password => "password"})
+    @user = create_user
   end
   
   after(:all) do
